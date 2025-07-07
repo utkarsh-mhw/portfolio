@@ -75,9 +75,9 @@ html {
   color: #007bff;
 }
 
-/* Space adjustment so icon doesn’t overlap nav links */
+
 .main-navbar ul {
-  padding-left: 2rem; /* Extra space on left for the icon */
+  padding-left: 2rem; 
 }
 
 /* --- Social Popup Overlay --- */
@@ -220,15 +220,15 @@ body {
     background-color: #f7f7f7;
 }
 
-/* (You will add .section-darker-light-gray { background-color: #f2f2f2; } for alternating sections later) */
+
 
 
 /* --- Universal Container for Content Width --- */
 .container {
-    max-width: 1200px; /* Adjust max-width as needed for overall site width */
-    margin: 0 auto; /* Center the container */
-    padding: 0 1.5rem; /* Horizontal padding for spacing on smaller screens */
-    width: 100%; /* Ensure it takes full width up to max-width */
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 1.5rem; 
+    width: 100%; 
 }
 
 /* --- Heading Styles (Apply the new highlight color) --- */
@@ -272,13 +272,13 @@ p {
 
 /* --- Home Section Specific Styles --- */
 .home-section {
-    min-height: 100vh; /* Make sure it takes at least the full viewport height */
+    min-height: 100vh; 
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    text-align: center; /* Center text within the section */
-    position: relative; /* For positioning the scroll arrow */
-    padding: 6rem 0; /* Add some top/bottom padding for very small screens */
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    position: relative; 
+    padding: 6rem 0; 
 }
 
 .home-content {
@@ -290,7 +290,7 @@ p {
 }
 
 .hero-text {
-    max-width: 800px; /* Limit width of text for readability */
+    max-width: 800px; 
 }
 
 .hero-text h1 {
