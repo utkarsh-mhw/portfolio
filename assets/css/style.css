@@ -1,0 +1,1272 @@
+/* --- Root & Body Styles --- */
+html {
+    box-sizing: border-box; /* Global box-sizing for easier layout */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* NAVBAR DESIGN */
+.main-navbar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.main-navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.main-navbar ul li a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2e3440;
+  text-decoration: none;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.main-navbar ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #2e3440;
+  transition: width 0.3s ease;
+}
+
+.main-navbar ul li a:hover::after,
+.main-navbar ul li a.active::after {
+  width: 100%;
+}
+
+
+/* --- Social Icon in Navbar (top-left) --- */
+.navbar-social-trigger {
+  position: absolute;
+  left: 1.5rem;
+  top: 1.2rem;
+  font-size: 1.2rem;
+  color: #2e3440;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar-social-trigger:hover {
+  color: #007bff;
+}
+
+/* Space adjustment so icon doesn’t overlap nav links */
+.main-navbar ul {
+  padding-left: 2rem; /* Extra space on left for the icon */
+}
+
+/* --- Social Popup Overlay --- */
+.social-popup-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 52, 64, 0.8);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Popup Box --- */
+.social-popup-box {
+  background: #ffffff;
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  min-width: 250px;
+  position: relative;
+}
+
+.social-popup-box a {
+  display: block;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: #2e3440;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-popup-box a i {
+  margin-right: 0.5rem;
+}
+
+.social-popup-box a:hover {
+  color: #007bff;
+}
+
+/* --- Close Button --- */
+.social-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.social-popup-close:hover {
+  color: #000;
+}
+
+.social-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: #2e3440;
+  word-break: break-all;
+}
+
+.social-entry i {
+  font-size: 1.2rem;
+  color: #2e3440;
+}
+
+.social-entry span {
+  font-family: monospace;
+  font-size: 1rem;
+  color: #2e3440;
+}
+
+.copy-social {
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.copy-social.success i {
+  color: #a0a0a0;
+}
+
+.copy-social:hover {
+  color: #007bff;
+}
+
+.copy-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  background-color: #2e3440;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+
+/* Show when active */
+.copy-social.show-tooltip .copy-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+
+
+/* LANDING PAGE DESIGN */
+body {
+    /* padding-left: 200px; */
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333; /* Default text color, adjust if needed for dark theme later */
+    background-color: #f7f7f7; /* Default background for the first section */
+    overflow-x: hidden; /* Prevent horizontal scrollbar issues */
+    min-height: 100vh; /* Ensure body takes full viewport height for centering */
+    display: flex;
+    flex-direction: column; /* Allows footer to stick to bottom if content is short */
+}
+
+/* --- Section Backgrounds --- */
+.section-light-gray { /* Background for this page */
+    background-color: #f7f7f7;
+}
+
+/* (You will add .section-darker-light-gray { background-color: #f2f2f2; } for alternating sections later) */
+
+
+/* --- Universal Container for Content Width --- */
+.container {
+    max-width: 1200px; /* Adjust max-width as needed for overall site width */
+    margin: 0 auto; /* Center the container */
+    padding: 0 1.5rem; /* Horizontal padding for spacing on smaller screens */
+    width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+/* --- Heading Styles (Apply the new highlight color) --- */
+h1, h2, h3, h4, h5, h6 {
+    color: #2e3440; /* Dark blue highlight for all headings */
+    font-weight: 700;
+    margin-bottom: 0.5rem; /* Adjust as needed */
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* --- Button Styles --- */
+.btn-primary { /* Dark button base style */
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: #2e3440; /* Dark blue background */
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    border-radius: 8px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.btn-primary:hover {
+    background-color: #3c4452; /* Slightly lighter dark blue on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.btn-primary.btn-outline:hover {
+    background-color: #2e3440; /* Fill with dark blue on hover */
+    color: #ffffff; /* White text on hover */
+    transform: translateY(-2px);
+}
+
+
+/* --- Home Section Specific Styles --- */
+.home-section {
+    min-height: 100vh; /* Make sure it takes at least the full viewport height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center text within the section */
+    position: relative; /* For positioning the scroll arrow */
+    padding: 6rem 0; /* Add some top/bottom padding for very small screens */
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Space between text and optional image */
+}
+
+.hero-text {
+    max-width: 800px; /* Limit width of text for readability */
+}
+
+.hero-text h1 {
+    font-size: 3.8rem; /* Large font size for impact */
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.3rem; /* Larger tagline font size */
+    color: #555; /* Softer color for tagline */
+    margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem; /* Space between buttons */
+    justify-content: center;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* --- Scroll Down Arrow --- */
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 2.5rem; /* Position from the bottom of the section */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #2e3440; /* Dark blue color */
+    animation: bounce 1.5s infinite; /* Simple bouncing animation */
+    z-index: 10; /* Ensure it's above other content */
+}
+
+.scroll-down-arrow a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none;
+    display: inline-block; /* Ensure padding/margin works */
+    padding: 10px; /* Make clickable area larger */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-15px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-7px);
+    }
+}
+
+
+/* --- Responsive Adjustments for Smaller Screens --- */
+@media (max-width: 992px) {
+    .home-section {
+        padding: 4rem 0; /* Adjust padding for smaller heights */
+    }
+    .hero-text h1 {
+        font-size: 3rem; /* Slightly smaller heading */
+    }
+    .hero-text p {
+        font-size: 1.1rem; /* Slightly smaller tagline */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5rem; /* Further reduction for tablets */
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 1rem;
+    }
+    .btn-primary {
+        width: 80%; /* Buttons take more width */
+        max-width: 250px;
+        margin: 0 auto; /* Center stacked buttons */
+    }
+    .scroll-down-arrow {
+        font-size: 1.8rem;
+        bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-section {
+        padding: 3rem 0;
+    }
+    .hero-text h1 {
+        font-size: 2rem; /* Even smaller for mobile */
+    }
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+    .btn-primary {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .scroll-down-arrow {
+        font-size: 1.5rem;
+        bottom: 1rem;
+    }
+}
+
+
+/* ABOUT ME DESIGN */
+
+
+.section-darker-light-gray { /* Background for alternating pages */
+    background-color: #f2f2f2;
+}
+
+/* --- Heading Styles (specific to About Me section) --- */
+/* If you want the "a little bit about me" to be larger/different than H2 default */
+.heading-large {
+    font-size: 3.2rem; /* Similar size to H1 on home page, but customizable */
+    font-weight: 700;
+    margin-bottom: 2rem; /* More spacing below for a softer look */
+    line-height: 1.2;
+    color: #2e3440; /* Apply highlight color */
+}
+
+
+/* --- About Me Section Specific Styles --- */
+.about-section {
+    padding: 6rem 0; /* Consistent padding top/bottom */
+    min-height: 100vh; /* Ensure it can take full height if content is short */
+    display: flex; /* Use flex to center content vertically */
+    align-items: center; /* Center content vertically */
+}
+
+.about-content {
+    display: flex;
+    align-items: center; /* Vertically align text and image */
+    justify-content: space-between; /* Space out columns */
+    gap: 4rem; /* Space between text and image columns */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.about-text-column {
+    flex: 1; /* Allow text column to grow */
+    min-width: 300px; /* Ensure it doesn't get too small */
+    max-width: 65%; /* Limit text width on large screens */
+    text-align: left; /* Text aligns left */
+}
+
+.about-text-column p {
+    font-size: 1.1rem;
+    color: #555; /* Softer text color */
+    margin-bottom: 1.5rem; /* Space between paragraphs */
+}
+
+.about-image-column {
+    flex-shrink: 0; /* Prevent image column from shrinking too much */
+    width: 350px; /* Fixed width for the image container on desktop */
+    height: 350px; /* Fixed height to ensure perfect circle */
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Hide anything outside the circle */
+    position: relative; /* For image positioning inside */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    
+}
+
+.profile-circular-img {
+    width: 100%; /* Image takes full width of its container */
+    height: 100%; /* Image takes full height */
+    object-fit: cover; /* Cover the container without distortion */
+    object-position: center; /* Center the image within the circle */
+    display: block; /* Remove extra space below image */
+}
+
+.about-image-column:hover {
+  border-color: #2e3440;
+  box-shadow: 0 0 15px rgba(46, 52, 64, 0.3);
+}
+
+/* --- Social Icons (reusing .social-icon class, but perhaps with new margin) --- */
+.about-social-links {
+    margin-top: 2.5rem; /* Space above social icons */
+    display: flex;
+    gap: 1rem; /* Space between individual icons */
+    justify-content: flex-start; /* Align icons to the left */
+    flex-wrap: wrap; /* Allow icons to wrap if many */
+}
+/* No need to redefine .social-icon, it uses the global style you already have */
+
+
+.social-icon { /* Assuming you have a class for your social icons */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Slightly increased size from 45px */
+    height: 50px; /* Slightly increased size from 45px */
+    background-color: #2e3440; /* Dark background as requested */
+    border-radius: 50%; /* Circle shape */
+    color: #ffffff; /* White icon color (assuming Font Awesome or SVG) */
+    font-size: 1.7rem; /* Slightly increased icon size from 1.5rem */
+    text-decoration: none;
+    margin: 0 0.5rem; /* Space between icons */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #3c4452;
+    transform: translateY(-2px);
+}
+
+
+/* --- Responsive Adjustments for About Me Section --- */
+@media (max-width: 992px) {
+    .about-content {
+        flex-direction: column; /* Stack columns on smaller screens */
+        text-align: center; /* Center text on mobile */
+    }
+    .about-text-column {
+        max-width: 100%; /* Text takes full width */
+        text-align: center; /* Center text */
+    }
+    .about-image-column {
+        order: -1; /* Move image above text on mobile */
+        margin-bottom: 3rem; /* Space between image and text */
+        width: 280px; /* Smaller image on tablet */
+        height: 280px;
+    }
+    .heading-large {
+        font-size: 2.5rem; /* Adjust heading size */
+    }
+    .about-social-links {
+        justify-content: center; /* Center social icons on mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 0; /* Reduce padding for smaller screens */
+    }
+    .about-image-column {
+        width: 250px; /* Smaller image on mobile */
+        height: 250px;
+    }
+    .heading-large {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .about-text-column p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-section {
+        padding: 3rem 0;
+    }
+    .about-image-column {
+        width: 200px; /* Even smaller image for small phones */
+        height: 200px;
+    }
+    .heading-large {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* ---  Experience Section Styles --- */
+
+
+.heading-large{
+    text-align: center;
+}
+
+.compact-experience-entry {
+  margin-bottom: 0.2rem !important;
+}
+
+.compact-experience-entry p.compact-role-description {
+  margin-top: 0.3rem;   /* Add this line */
+  margin-bottom: 0.4rem; /* Slightly increased for readability */
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.job-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2e3440;
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+.job-company {
+  font-weight: 400;
+  color: #666;
+  margin-left: 0.4rem;
+}
+
+.job-dates {
+  font-size: 0.95rem;
+  color: #888;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+}
+
+
+.compact-role-description {
+  list-style: disc;
+  padding-left: 0rem;
+  color: #444;
+  font-size: 1rem;
+  font-style: italic;
+  margin-top: 0.2rem;
+  margin-bottom: 0.4rem;
+  /* border: 1px solid blue; for debugging */
+}
+
+
+.compact-role-description li {
+  margin-bottom: 0.2rem;
+}
+
+.experience-divider {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 1rem 0;
+}
+
+/* Optional: Reduce padding for the whole section */
+.experience-section {
+  background-color: #f7f7f7;
+  padding: 4rem 0;
+}
+
+.role-skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #555;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Responsive Tweak */
+@media (max-width: 576px) {
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .job-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .job-dates {
+    font-size: 0.85rem;
+  }
+
+  .compact-role-description {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* Skills section start */
+/* --- Skills Section Styles (Adjusted Proportions) --- */
+.heading-large-skills {
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem; /* Keeps spacing consistent below heading */
+    line-height: 1.2;
+    color: #2e3440;
+}
+
+.skills-section {
+    /* background-color: #f2f2f2; */
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    padding: 5rem 0; /* Keep current padding for the overall section */
+}
+
+
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Ensures a consistent 2-column layout */
+    gap: 2.5rem; /* Increased gap between cards slightly to fill space better */
+    margin-top: 2rem; /* Increased space between heading and grid */
+    max-width: 900px; /* Significantly reduced max-width to make cards look more proportional on 13-inch screens */
+    margin-left: auto;
+    margin-right: auto; /* Centers the grid */
+}
+
+.skill-category {
+    background-color: #ffffff;
+    padding: 1.8rem 2rem; /* Slightly increased internal padding for a larger card feel */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    color: #2e3440;
+    margin-bottom: 1rem; /* Keep existing margin bottom */
+    text-align: left;
+}
+
+.skill-tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem; /* Slightly increased gap between tags for better separation */
+    row-gap: 0.5rem;
+}
+
+
+/* --- Responsive Adjustments for Skills Section --- */
+/* These media queries are adjusted to ensure the proportions scale well */
+@media (max-width: 992px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 2rem; /* Adjusted gap for this breakpoint */
+        max-width: 700px; /* Adjusted max-width for this breakpoint */
+    }
+    .skill-category {
+        padding: 1.5rem 1.8rem; /* Adjusted padding */
+    }
+    .skill-category h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.9rem;
+    }
+    .skill-tags-wrapper {
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-section {
+        padding: 3.5rem 0;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr; /* Stacks to 1 column on smaller devices */
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 1.5rem;
+    }
+    .skill-category {
+        padding: 1.5rem;
+    }
+    .skill-category h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .skill-tags-wrapper {
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .skills-section {
+        padding: 3rem 0;
+    }
+    .skills-grid {
+        padding: 0 1.5rem;
+        margin-top: 1.5rem; /* Slight adjustment here as well */
+    }
+    .skill-category {
+        padding: 1.2rem;
+    }
+    .skill-category h3 {
+        font-size: 1.2rem;
+    }
+    .skill-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+/* Project Section Starts */
+.projects-section {
+  background-color: #ffffff;
+  padding: 5rem 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.project-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  min-height: 360px;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.project-card.light {
+  background-color: #f9f9f9;
+}
+
+.project-card.gray {
+  background-color: #f1f1f1;
+}
+
+.project-card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  height: 100%;
+}
+
+.project-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-impact {
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.project-link-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background-color: #2e3440;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.project-link-icon:hover {
+  background-color: #3c4452;
+}
+
+.view-more-wrapper {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.view-more-btn {
+  background-color: transparent;
+  color: #2e3440;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.view-more-btn i {
+  font-size: 0.9rem;
+}
+
+.view-more-btn:hover {
+  color: #555;
+}
+
+@media (max-width: 576px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Publication Section Starts */
+/* --- Publications Section Styles --- */
+.publications-section {
+  background-color: #f2f2f2; /* Light gray to alternate from project section */
+  padding: 6rem 0;
+}
+
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.publication-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publication-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.publication-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.publication-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.publication-title {
+  font-size: 1.4rem;
+  color: #2e3440;
+  margin-bottom: 0.5rem;
+}
+
+.publication-authors,
+.publication-journal {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+
+.publication-summary {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0.8rem 0 1rem;
+  flex-grow: 1;
+}
+
+.publication-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.publication-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background-color: #2e3440;
+  color: #ffffff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.publication-btn:hover {
+  background-color: #3c4452;
+}
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 768px) {
+  .publications-section {
+    padding: 4rem 0;
+  }
+
+  .publication-image {
+    height: 200px;
+  }
+
+  .publication-title {
+    font-size: 1.3rem;
+  }
+
+  .publication-summary {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .publication-content {
+    padding: 1rem;
+  }
+
+  .publication-title {
+    font-size: 1.2rem;
+  }
+
+  .publication-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+
+/* --- Contact Section Styles --- */
+.contact-section {
+    background-color: #f7f7f7;
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 1.5rem auto 3rem auto;
+}
+
+.contact-details {
+    margin-bottom: 2.5rem;
+}
+
+.email-copy-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #2e3440;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border: 2px solid #2e3440;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-email-link:hover {
+    background-color: #2e3440;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-email-link i {
+    font-size: 1.6rem;
+}
+
+/* Copy Icon + Feedback */
+.copy-icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.copy-icon {
+    font-size: 1.4rem;
+    color: #000000;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.copy-icon:hover {
+    color: #007bff;
+    transform: translateY(-2px);
+}
+
+.copy-feedback {
+    position: absolute;
+    top: 50%;
+    left: 130%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: #6c757d;
+    background-color: #f1f1f1;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: none;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.copy-feedback i {
+    color: #28a745;
+    font-size: 1rem;
+}
+
+.contact-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.social-icon {
+    color: #ffffff;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}
+
+/* --- Footer Styles --- */
+.footer {
+    background-color: #2e3440;
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.footer-social-links .social-icon {
+    color: #ffffff;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social-links .social-icon {
+    color: #ffffff; /* White for dark footer */
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social-links .social-icon:hover {
+    color: #a0a0a0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 4rem 0;
+    }
+    .contact-intro {
+        font-size: 1rem;
+        margin: 1rem auto 2rem auto;
+        padding: 0 1rem;
+    }
+    .contact-email-link {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.2rem;
+    }
+    .contact-email-link i {
+        font-size: 1.4rem;
+    }
+    .copy-icon {
+        font-size: 1.2rem;
+    }
+    .copy-feedback {
+        font-size: 0.8rem;
+        left: 120%;
+    }
+    .contact-social-links {
+        gap: 1.2rem;
+    }
+    .footer {
+        padding: 1.5rem 0;
+    }
+    .footer-social-links .social-icon {
+        font-size: 1.2rem;
+    }
+    .footer-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .email-copy-wrapper {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .copy-feedback {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 10%);
+    }
+}
+
+/* Sticky footer styling  - taking up a lot of space*/
+/* .sticky-footer-socials {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2e3440;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.6rem 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-footer-socials a {
+    color: #ffffff;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.sticky-footer-socials a:hover {
+    color: #a0a0a0;
+} */
+
+/* Hide on larger screens if needed */
+/* @media (min-width: 1024px) {
+    .sticky-footer-socials {
+        display: none;
+    }
+} */
