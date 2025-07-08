@@ -201,6 +201,50 @@ html {
 }
 
 
+/* navbar adjustment for mobile */
+/* Hamburger icon styling */
+.navbar-hamburger {
+  display: none;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  font-size: 1.4rem;
+  color: #2e3440;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Mobile nav styles */
+@media (max-width: 768px) {
+  .main-navbar ul {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .main-navbar ul.active {
+    display: flex;
+  }
+
+  .navbar-hamburger {
+    display: block;
+  }
+
+  .navbar-social-trigger {
+    top: 1.2rem;
+    left: 1rem;
+  }
+}
+
+
 
 /* LANDING PAGE DESIGN */
 body {

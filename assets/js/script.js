@@ -55,6 +55,16 @@ window.addEventListener("scroll", () => {
             }, 2000);
         });
     });
+    const toggleBtn = document.getElementById('navbarToggle');
+    const navLinks = document.getElementById('navbarLinks');
+
+    if (toggleBtn && navLinks) {
+      toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+}
+
+
 });
 
 
