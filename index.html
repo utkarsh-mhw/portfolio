@@ -4,488 +4,899 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utkarsh Maheshwari | Data Scientist</title>
-    <meta name="description" content="Portfolio of Utkarsh Maheshwari — Experienced Data Scientist proficient in analytics, Python, SQL, consulting and healthcare analytics." />
-    <link rel="icon" href="assets/images/favicon2.ico" type="image/x-icon">
+    <meta name="description" content="Data Scientist specializing in ML, deep learning, and end-to-end AI solutions.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: 200px 1fr 200px; /* Equal left/right columns */
+            align-items: center;
+        }
+
+        .header-left {
+            justify-self: start;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            justify-content: center; /* Center the nav items */
+            grid-column: 2; /* Place in center column */
+        }
+
+        .contact-btn {
+            justify-self: end;
+            grid-column: 3; /* Place in right column */
+        }
+        .contact-btn {
+            background: #2e3440;
+            color: #ffffff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        /* header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        } */
+
+        @media (max-width: 768px) {
+            .header-left {
+                gap: 2rem;
+            }
+            .nav-links {
+                display: none; /* already hidden on mobile */
+            }
+        }
+        
+        /* .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        } */
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
 
 
-<nav class="main-navbar">
-  <!-- Social Icon Trigger (top-left) -->
-  <div class="navbar-social-trigger" id="openSocialPopup">
-    <i class="fas fa-comment-dots"></i>
-  </div>
 
-  <!-- Hamburger Toggle (top-right) -->
-  <div class="navbar-hamburger" id="navbarToggle">
-    <i class="fas fa-bars"></i>
-  </div>
+        .contact-btn:hover {
+            background: #3c4452;
+        }
 
-  <!-- Nav links -->
-  <ul id="navbarLinks">
-    <li><a class="about" href="#about">About</a></li>
-    <!-- <li><a href="#about">About</a></li> -->
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+        /* Contact Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .modal.active {
+            display: flex;
+        }
 
-<!-- Social Popup -->
-<div class="social-popup-overlay" id="socialPopup">
-  <div class="social-popup-box">
-    <div class="social-popup-close" id="closeSocialPopup">&times;</div>
+        .modal-content {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+        }
 
-    <div class="social-entry">
-        <i class="fab fa-github"></i>
-        <a href="https://github.com/utkarsh-mhw" target="_blank" class="social-text">
-            github.com/utkarsh-mhw
-        </a>
-        <span class="copy-social" data-copy="https://github.com/utkarsh-mhw" title="Copy">
-            <i class="far fa-copy"></i>
-        </span>
-    </div>
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
 
-    <div class="social-entry">
-        <i class="fab fa-linkedin-in"></i>
-        <a href="https://linkedin.com/in/utkarshmah" class="social-text">
-            linkedin.com/in/utkarshmah
-        </a>
-        <span class="copy-social" data-copy="https://linkedin.com/in/utkarshmah" title="Copy">
-            <i class="far fa-copy"></i>
-        </span>
-    </div>
+        .modal-close:hover {
+            color: #1a1a1a;
+        }
 
-    <div class="social-entry">
-        <i class="fas fa-envelope"></i>
-        <a href="mailto:utkarshm005@gmail.com" class="social-text">
-            utkarshm005@gmail.com
-        </a>
-        <span class="copy-social" data-copy="utkarshm005@gmail.com" title="Copy">
-            <i class="far fa-copy"></i>
-        </span>
-    </div>
+        .modal h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
 
-  </div>
-</div>
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: background 0.2s ease;
+        }
 
+        .contact-item:hover {
+            background: #f8f8f8;
+        }
 
-<!-- Home Page Starts -->
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #666;
+            width: 24px;
+        }
 
-<!-- <body>
+        .contact-item span {
+            font-size: 0.95rem;
+        }
 
-    <section id="home" class="section-light-gray home-section">
-        <div class="container home-content">
-            <div class="hero-text">
-                <h3>Hi! This is</h3>
-                <h1>Utkarsh Maheshwari</h1>
-                <p>I bridge the gap between data and decisions.</p>
-                <div class="hero-buttons">
-                    <a href="mailto:utkarshm005@gmail.com" class="btn-primary">Get in touch</a>
-                    <a href="https://drive.google.com/file/d/1BYGccgCqhDdEc-DHJ7XOFFtI31lHNBsc/view?usp=sharing" target="_blank" class="btn-primary btn-outline">Resume</a>
-                </div>
-            </div>
-            </div> <div class="scroll-down-arrow">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
-        </div>
-    </section> -->
+        /* Main Content */
+        main {
+            padding-top: 80px;
+        }
 
-<!-- About Page Starts -->
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    <section id="about" class="section-darker-light-gray about-section">
-        <div class="container about-content">
-            <div class="about-text-column">
-                <!-- <h2 class="heading-large">Hi, I'm Utkarsh Maheshwari</h2> -->
-                <h2 class="heading-large" style="text-align: left; margin-left: 0;">Utkarsh Maheshwari</h2>
-                <p> I am a data scientist currently pursuing my Graduate studies at Georgia Institute of Technology, with a focus on applied Machine Learning.</p>
-                <p> I hold a bachelors in Computer Science form SRM University, India and 4 years of professional data science experience working on demand forecasting, salesforce analytics and financial modeling. Professional summary:</p>
-                
-                <ul class="about-experience-list">
-                    <li>
-                        <strong>Genpact</strong> — Data Science Assistant Manager
-                        <br />
-                        Built and deployed predictive models, SQL-based pipelines and Power BI dashboards to support sales force optimization and decision support.
-                    </li>
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 6rem;
+        }
+        
+        .hero .container {
+            display: grid;
+            /* grid-template-columns: 1.2fr 1fr; */
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
 
-                    <li>
-                        <strong>ZS Associates</strong> — Decision Analytics Associate Consultant  
-                        <br />
-                        Led end-to-end analytical workstreams including demand forecasting, financial modeling, and launch analytics for major pharmaceutical clients.
-                    </li>
-                    
-                    <li>
-                        <strong>Samsung Research Institute</strong> — Research Intern  
-                        <br />
-                        Developed deep learning models for speech enhancement.
-                    </li>
-                </ul>
-
-            </div>
-            <div class="about-image-column">
-                <img src="assets/images/profilepicture4.jpg" alt="Utkarsh Maurya Profile" class="profile-circular-img">
-                <div class="about-social-links">
-                    <a href="https://github.com/utkarsh-mhw" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/utkarshmah" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="mailto:utkarshm005@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-                    <a href="https://drive.google.com/file/d/1BYGccgCqhDdEc-DHJ7XOFFtI31lHNBsc/view?usp=sharing" target="_blank" class="social-icon" title="View Resume"><i class="fas fa-file-alt"></i></a>
-                </div>
-            </div>
+        @media (max-width: 768px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center; /* center text on mobile */
+            }
             
+            .hero-content {
+                order: 2; /* put text below image on mobile */
+            }
+            
+            .hero-image {
+                order: 1;
+                /* justify-content: center; */
+            }
+            
+            .hero-image img {
+                width: 240px;
+                height: 240px;
+            }
+        }
+        /* .hero .container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        } */
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .hero-content .title {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-content .description {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Section */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            color: #1a1a1a;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+            background: #ffffff;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ccc;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            font-weight: 500;
+            background: #ffc107;
+            color: #000;
+        }
+
+        .badge.research {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background: #f5f5f5;
+            color: #666;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: #2e3440;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: #3c4452;
+        }
+
+        .project-link.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .more-projects {
+            display: none;
+        }
+
+        .more-projects.active {
+            display: grid;
+        }
+
+        .toggle-projects {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: 1px solid #e0e0e0;
+            padding: 0.7rem 2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: #1a1a1a;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-btn:hover {
+            background: #f8f8f8;
+        }
+
+        /* Experience */
+
+
+
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .experience-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .company {
+            color: #666;
+            font-weight: 400;
+        }
+
+        .experience-dates {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .experience-description {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero {
+                padding: 3rem 0 4rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content .title {
+                font-size: 1.1rem;
+            }
+
+            .hero-image img {
+                width: 240px;
+                height: 240px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <a href="#" class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Utkarsh Maheshwari</a>
         </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+        </nav>
+        <button class="contact-btn" id="contactBtn">Contact</button>
+    </header>
 
-        <div class="scroll-down-arrow">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Get in touch</h2>
+            <a href="mailto:utkarshm005@gmail.com" class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>utkarshm005@gmail.com</span>
+            </a>
+            <a href="https://github.com/utkarsh-mhw" target="_blank" class="contact-item">
+                <i class="fab fa-github"></i>
+                <span>github.com/utkarsh-mhw</span>
+            </a>
+            <a href="https://linkedin.com/in/utkarshmah" target="_blank" class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <span>linkedin.com/in/utkarshmah</span>
+            </a>
+            <a href="https://drive.google.com/file/d/1I8k5We-UnRQrRtOwMAZ1_dgGa1JWUVX5/view?usp=sharing" target="_blank" class="contact-item">
+                <i class="fas fa-file-alt"></i>
+                <span>Resume</span>
+            </a>
         </div>
-
-
-    </section>
-
-
-<!-- Experience Page starts -->
-
-    <section id="experience" class="section-light-gray experience-section">
-        <div class="container">
-            <h2 class="heading-large">My Work Experience</h2>
-
-            <div class="compact-experience-entry">
-            <div class="job-header">
-                <h3>Assistant Manager<span class="job-company">at Genpact</span></h3>
-                <p class="job-dates">Jan 2025 – May 2025</p>
-            </div>
-            <p class="compact-role-description">Led a team of two to optimize sales force outreach strategies for US clients, using SQL and R to improve team efficiency by 3% year-over-year.</p>
-
-            <div class="role-skills-tags">
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">R</span>
-                <span class="skill-tag">Salesforce Operations</span>
-            </div>
-
-            </div>
-
-            <hr class="experience-divider">
-
-            <div class="compact-experience-entry">
-            <div class="job-header">
-                <h3>Associate Consultant<span class="job-company">at ZS Associates</span></h3>
-                <p class="job-dates">Jan 2024 - Jan 2025</p>
-            </div>
-            <p class="compact-role-description">Promoted to Associate Consultant and managed a team of four to plan and execute data analyses, translating business questions into insights and dashboards using Excel, SQL, Python, and Power BI.</p>
-
-            <div class="role-skills-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Power BI</span>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">Predictive Modelling</span>
-                <span class="skill-tag">Project Management</span>
-            </div>
-            </div>
-
-            <hr class="experience-divider">
-
-            <div class="compact-experience-entry">
-            <div class="job-header">
-                <h3>Associate<span class="job-company">at ZS Associates</span></h3>
-                <p class="job-dates">Jun 2021 - Dec 2023</p>
-            </div>
-            <p class="compact-role-description"> Built supply chain and financial models to support demand planning and launch strategy decisions, using Excel, Python, and VBA for automation and business insights.</p>
-
-            <div class="role-skills-tags">
-                <span class="skill-tag">Excel</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">VBA</span>
-                <span class="skill-tag">Predictive Modelling</span>
-                <span class="skill-tag">SQL</span>
-            </div>
-            </div>
-
-            <hr class="experience-divider">
-
-            <div class="compact-experience-entry">
-            <div class="job-header">
-                <h3>Research Intern<span class="job-company">at Samsung Research Institute</span></h3>
-                <p class="job-dates">Oct 2020 – Mar 2021</p>
-            </div>
-            <p class="compact-role-description">Developed an encoder-decoder neural network using TensorFlow to denoise speech signals, and performed data wrangling and feature extraction in Python.</p>
-
-            <div class="role-skills-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Feature Engineering</span>
-            </div>
-            </div>
-        </div>
-    </section>
-   
-
-    <!-- Skills Section starts -->
-
-    <section id="skills" class="section-darker-light-gray skills-section">
-        <div class="container">
-            <h2 class="heading-large-skills">My Skills & Expertise</h2>
-
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags-wrapper">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">VBA</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div class="skill-tags-wrapper">
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">Matplotlib</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Dplyr</span>
-                        <span class="skill-tag">Ggplot2</span>
-                        <span class="skill-tag">Beautiful Soup</span>
-                        <span class="skill-tag">Selenium</span>
-                        <span class="skill-tag">OpenCV</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Databases & Tools</h3>
-                    <div class="skill-tags-wrapper">
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Excel (Advanced)</span>
-                        <span class="skill-tag">Git</span>
-                        </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Analytical & Business Skills</h3>
-                    <div class="skill-tags-wrapper">
-                        <span class="skill-tag">Demand Forecasting</span>
-                        <span class="skill-tag">Supply Chain</span>
-                        <span class="skill-tag">Call Planning</span>
-                        <span class="skill-tag">Secondary Research</span>
-                        <span class="skill-tag">Project Management</span>
-                        </div>
-                </div>
-
-            </div> 
-        </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="projects-section">
-    <div class="container">
-        <h2 class="heading-large text-center">Projects</h2>
-
-        <div class="projects-grid">
-
-        <!-- Project Card 1 -->
-        <div class="project-card light">
-            <div class="project-card-inner">
-            <div class="project-card-content">
-                <h3 class="project-title">InstaBot</h3>
-                <p class="project-desc">Built a web scraper to analyze Instagram follower behavior and hashtag engagement trends, using Python and visual analytics.</p>
-
-                <div class="role-skills-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Selenium</span>
-                <span class="skill-tag">Pandas</span>
-                <span class="skill-tag">NumPy</span>
-                <span class="skill-tag">Matplotlib</span>
-                <span class="skill-tag">Seaborn</span>
-                </div>
-
-                <p class="project-impact"><strong>Impact:</strong> dentified posting patterns and genre-specific performance metrics.</p>
-            </div>
-
-            <div class="project-links">
-                <a href="https://github.com/utkarsh-mhw/InstaBot" target="_blank" class="project-link-icon">
-                <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
-            </div>
-        </div>
-
-        <!-- Project Card 2 -->
-        <div class="project-card gray">
-            <div class="project-card-inner">
-            <div class="project-card-content">
-                <h3 class="project-title">Image Style Transfer</h3>
-                <p class="project-desc">Used deep learning to transfer artistic styles from one image onto second image photographs while preserving content structure.</p>
-
-                <div class="role-skills-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Tensorflow</span>
-                <span class="skill-tag">CNNs</span>
-                <span class="skill-tag">Neural Style Transfer</span>
-                </div>
-
-                <p class="project-impact"><strong>Impact:</strong> Reduced stockouts by 25% and improved reorder efficiency.</p>
-            </div>
-
-            <div class="project-links">
-                <a href="https://github.com/utkarsh-mhw/Image-Style-Transfer-using-CNNs" target="_blank" class="project-link-icon">
-                <i class="fab fa-github"></i> GitHub
-                </a>
-                <!-- <a href="#" target="_blank" class="project-link-icon">
-                <i class="fas fa-external-link-alt"></i> Live Demo
-                </a> -->
-            </div>
-            </div>
-        </div>
-
-        <!-- Project Card 3 -->
-        <div class="project-card light">
-            <div class="project-card-inner">
-            <div class="project-card-content">
-                <h3 class="project-title">Zomato API Analysis</h3>
-                <p class="project-desc">Fetched and analyzed restaurant data using Zomato’s API to study food trends, pricing, and rating patterns.</p>
-
-                <div class="role-skills-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">API Handling</span>
-                <span class="skill-tag">Pandas</span>
-                <span class="skill-tag">NumPy</span>
-                <span class="skill-tag">Matplotlib</span>
-                </div>
-            </div>
-
-            <div class="project-links">
-                <a href="https://github.com/utkarsh-mhw/Zomato-API-and-Analysis" target="_blank" class="project-link-icon">
-                <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
-            </div>
-        </div>
-
-        </div>
-
-        <!-- View More Button (for future scalability) -->
-        <!-- <div class="view-more-wrapper">
-        <button class="view-more-btn">
-            View More <i class="fas fa-chevron-down"></i>
-        </button>
-        </div> -->
     </div>
-    </section>
-    
 
-
-    <!-- RESEARCH SECTION STARTS -->
-    <section id="publications" class="publications-section">
-        <div class="container">
-            <h2 class="heading-large text-center">Research & Publications</h2>
-
-            <div class="publications-grid">
-                <div class="publication-card">
-                    <img src="./assets/images/Representational_PRISM_Image.png" alt="Paper 1 Visual" class="publication-image" />
-                    <div class="publication-content">
-                    <h3 class="publication-title">Convolutional Encoder–Decoder Architecture for Speech Enhancement</h3>
-                    <p class="publication-authors">
-                        <strong>U. Maheshwari</strong>, P. Goel, R Annie Uthra, Vinay Vasanth Patage, S. Tiwari, and S. Goyal
+    <main>
+        <!-- Hero -->
+        <section id="about" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Utkarsh Maheshwari</h1>
+                    <p class="title">Data Scientist</p>
+                    <p class="description">
+                        MS Analytics student at Georgia Tech specializing in deep learning, computer vision, and production ML systems. 4 years of experience building end-to-end analytical solutions across healthcare, tech, and operations domains at Samsung Research, ZS Associates, and Genpact.
                     </p>
-                    <p class="publication-journal">Published in LNEE (India), Nov 2021</p>
-                    <p class="publication-summary">A deep learning model that accepts audio inputs and accurately separates various sources of speech and sound, developed for Samsung Research Institute.</p>
-                    <div class="publication-links">
-                        <a href="https://doi.org/10.1007/978-981-16-4943-1_34" target="_blank" class="publication-btn">
-                        <i class="fas fa-link"></i> DOI
-                        </a>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/profilepicture4.jpg" alt="Utkarsh Maheshwari">
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">>
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                
+                <!-- Featured Projects -->
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">NutriLens</h3>
+                            </div>
+                            <p class="project-description">End-to-end nutrition tracking app using computer vision to identify food and calculate nutritional information. Deployed with FastAPI backend and Streamlit frontend.</p>
+                            <div class="project-tags">
+                                <span class="tag">Computer Vision</span>
+                                <span class="tag">Deep Learning</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">Streamlit</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">WhyHere</h3>
+                            </div>
+                            <p class="project-description">ML-powered location recommendation platform integrating geospatial data processing, predictive modeling, and interactive visualizations.</p>
+                            <div class="project-tags">
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Geospatial</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">Project in Development</h3>
+                                <span class="badge">WIP</span>
+                            </div>
+                            <p class="project-description">Advanced ML system currently under development. Full details and codebase will be released upon completion.</p>
+                            <div class="project-tags">
+                                <span class="tag">Deep Learning</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link disabled"><i class="fab fa-github"></i> Private Repo</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="publication-card">
-                    <img src="./assets/images/Lucid_gan_image.png" alt="Paper 2 Visual" class="publication-image" />
-                    <div class="publication-content">
-                    <h3 class="publication-title">Lucid-GAN: An Adversarial Network for Enhanced Image Inpainting</h3>
-                    <p class="publication-authors">
-                        <strong>U. Maheshwari</strong>, V. Pavan, and U. Kiruthika
-                    </p>
-                    <p class="publication-journal">Presented at CIVEMSA Conference (Taiwan), Jun 2021</p>
-                    <p class="publication-summary">A novel Generative Adversarial Network (GAN), named Lucid-GAN that restores damaged images and upscales their quality.</p>
-                    <div class="publication-links">
-                        <a href="https://doi.org/10.1109/civemsa52099.2021.9493581" target="_blank" class="publication-btn">
-                        <i class="fas fa-link"></i> DOI
-                        </a>
+                <!-- More Projects (Hidden Initially) -->
+                <div class="projects-grid more-projects" id="moreProjects">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">Image Style Transfer</h3>
+                                <span class="badge research">Paper Implementation</span>
+                            </div>
+                            <p class="project-description">Neural style transfer using CNNs to apply artistic styles from one image onto photographs while preserving content structure.</p>
+                            <div class="project-tags">
+                                <span class="tag">TensorFlow</span>
+                                <span class="tag">CNNs</span>
+                                <span class="tag">Computer Vision</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/utkarsh-mhw/Image-Style-Transfer-using-CNNs" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">Lucid-GAN</h3>
+                                <span class="badge research">Research Publication</span>
+                            </div>
+                            <p class="project-description">Novel GAN architecture for enhanced image inpainting. Restores damaged images and upscales quality. Published at CIVEMSA Conference 2021.</p>
+                            <div class="project-tags">
+                                <span class="tag">GANs</span>
+                                <span class="tag">Deep Learning</span>
+                                <span class="tag">PyTorch</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://doi.org/10.1109/civemsa52099.2021.9493581" target="_blank" class="project-link"><i class="fas fa-link"></i> Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">Speech Enhancement System</h3>
+                                <span class="badge research">Research Publication</span>
+                            </div>
+                            <p class="project-description">Convolutional encoder-decoder architecture for speech enhancement. Published in LNEE 2021. Developed at Samsung Research Institute.</p>
+                            <div class="project-tags">
+                                <span class="tag">TensorFlow</span>
+                                <span class="tag">Audio Processing</span>
+                                <span class="tag">Deep Learning</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://doi.org/10.1007/978-981-16-4943-1_34" target="_blank" class="project-link"><i class="fas fa-link"></i> Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">Variational Autoencoder</h3>
+                                <span class="badge research">Paper Implementation</span>
+                            </div>
+                            <p class="project-description">Implementation of VAE for generative modeling and dimensionality reduction on image datasets.</p>
+                            <div class="project-tags">
+                                <span class="tag">PyTorch</span>
+                                <span class="tag">Generative Models</span>
+                                <span class="tag">Deep Learning</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toggle-projects">
+                    <button class="toggle-btn" id="toggleProjectsBtn">View All Projects</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">>
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Assistant Manager <span class="company">at Genpact</span></h3>
+                            <span class="experience-dates">Jan 2024 – May 2024</span>
+                        </div>
+                        <p class="experience-description">Led sales force optimization projects, building predictive models, SQL pipelines, and Power BI dashboards to drive data-informed decision-making for US pharmaceutical clients.</p>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Associate Consultant <span class="company">at ZS Associates</span></h3>
+                            <span class="experience-dates">Jan 2024 – Jan 2025</span>
+                        </div>
+                        <p class="experience-description">Managed end-to-end analytical workstreams including demand forecasting, financial modeling, and launch analytics for major pharmaceutical clients using Python, SQL, and Power BI.</p>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Associate <span class="company">at ZS Associates</span></h3>
+                            <span class="experience-dates">Jun 2021 – Dec 2023</span>
+                        </div>
+                        <p class="experience-description">Built supply chain and financial models to support demand planning and launch strategy decisions using Excel, Python, and VBA for automation and business insights.</p>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Research Intern <span class="company">at Samsung Research Institute</span></h3>
+                            <span class="experience-dates">Oct 2020 – Mar 2021</span>
+                        </div>
+                        <p class="experience-description">Developed encoder-decoder neural networks using TensorFlow for speech signal denoising, performing data wrangling and feature extraction.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-
-    <!-- CONTACT AND CLOSER PAGE -->
-
-    <section id="contact" class="section-light-gray contact-section">
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <h2 class="heading-large text-center">Let's Connect!</h2>
-            <p class="contact-intro">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-                Feel free to reach out, whether it's for collaboration, a job opportunity, or just to say hello!
-            </p>
-
-            <div class="contact-details">
-                <div class="email-copy-wrapper">
-                    <a href="mailto:utkarshm005@gmail.com" class="contact-email-link">
-                        <i class="fas fa-paper-plane"></i> utkarshm005@gmail.com
-                    </a>
-                    <span class="copy-icon-wrapper">
-                        <span class="copy-icon" data-email="utkarshm005@gmail.com" title="Copy Email">
-                            <i class="far fa-copy"></i>
-                        </span>
-                        <span class="copy-feedback">
-                            <i class="fas fa-check-circle"></i> Copied!
-                        </span>
-                    </span>
-                </div>
+            <div class="footer-links">
+                <a href="https://github.com/utkarsh-mhw" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/utkarshmah" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:utkarshm005@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
-
-            <!-- <div class="contact-social-links">
-                <a href="https://github.com/utkarsh-mhw" target="_blank" class="social-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/utkarshmah" target="_blank" class="social-icon">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-            </div> -->
-        </div>
-    </section>
-
-
-    <!-- Sticky Social Bar - taking up lot of space -->
-    <!-- <div class="sticky-footer-socials">
-        <a href="https://github.com/utkarsh-mhw" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/utkarshmah" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:utkarshm005@gmail.com"><i class="fas fa-envelope"></i></a>
-    </div> -->
-
-
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-social-links">
-                <a href="https://github.com/utkarsh-mhw" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/utkarshmah" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                <a href="mailto:utkarshm005@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p class="footer-text">&copy; 2025 Utkarsh Maheshwari. All rights reserved.</p>
+            <p class="footer-text">© 2025 Utkarsh Maheshwari</p>
         </div>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <script>
+        // Contact Modal
+        const contactBtn = document.getElementById('contactBtn');
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+
+        contactBtn.addEventListener('click', () => {
+            contactModal.classList.add('active');
+        });
+
+        closeModal.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+        });
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        });
+
+        // Toggle Projects
+        const toggleBtn = document.getElementById('toggleProjectsBtn');
+        const moreProjects = document.getElementById('moreProjects');
+
+        toggleBtn.addEventListener('click', () => {
+            if (moreProjects.classList.contains('active')) {
+                moreProjects.classList.remove('active');
+                toggleBtn.textContent = 'View All Projects';
+            } else {
+                moreProjects.classList.add('active');
+                toggleBtn.textContent = 'Show Less';
+            }
+        });
+
+        // Active nav on scroll (optional - keeping header minimal)
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            // Can add scroll-based effects here if needed
+        });
+    </script>
 </body>
 </html>
