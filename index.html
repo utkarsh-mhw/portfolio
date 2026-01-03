@@ -236,7 +236,7 @@
         .hero .container {
             display: grid;
             /* grid-template-columns: 1.2fr 1fr; */
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 4rem;
             align-items: center;
         }
@@ -294,12 +294,24 @@
             justify-content: flex-end;
         }
 
+        /* .hero-image img {
+            width: 350px;
+            height: 400px; */
+            /* border-radius: 50%; */
+            /* object-fit: cover;
+            border: 1px solid #e0e0e0;
+        } */
         .hero-image img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
+            width: 350px;
+            height: 400px;
             object-fit: cover;
             border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.2s ease;
+        }
+        .hero-image img:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         /* Section */
@@ -334,7 +346,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .project-image {
+        /* .project-image {
             width: 100%;
             height: 200px;
             background: #f5f5f5;
@@ -343,7 +355,23 @@
             justify-content: center;
             font-size: 3rem;
             color: #ccc;
+        } */
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
 
         .project-body {
             padding: 1.5rem;
@@ -362,19 +390,34 @@
             color: #1a1a1a;
         }
 
+
+
+
+        /* applied ML */
         .badge {
             font-size: 0.7rem;
             padding: 0.2rem 0.6rem;
             border-radius: 3px;
             font-weight: 500;
-            background: #ffc107;
-            color: #000;
+            background: #e8f5e9;
+            color: #2e7d32;
         }
-
+        /* Research Publication - Keep current blue */
         .badge.research {
             background: #e3f2fd;
             color: #1565c0;
         }
+
+        /* Paper Implementation - Soft purple */
+        .badge.implementation {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        /* .badge.research {
+            background: #e3f2fd;
+            color: #1565c0;
+        } */
 
         .project-description {
             font-size: 0.95rem;
@@ -593,11 +636,11 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#projects">Projects & Research</a></li>
                 <li><a href="#experience">Experience</a></li>
             </ul>
         </nav>
-        <button class="contact-btn" id="contactBtn">Contact</button>
+        <button class="contact-btn" id="contactBtn">Resume & Contact</button>
     </header>
 
     <!-- Contact Modal -->
@@ -632,8 +675,9 @@
                     <h1>Utkarsh Maheshwari</h1>
                     <p class="title">Data Scientist</p>
                     <p class="description">
-                        MS Analytics student at Georgia Tech specializing in deep learning, computer vision, and production ML systems. 4 years of experience building end-to-end analytical solutions across healthcare, tech, and operations domains at Samsung Research, ZS Associates, and Genpact.
+                        I’m a graduate student at Georgia Tech with 4 years of industry experience in analytics and applied machine learning. Before Georgia Tech, I worked at Genpact, ZS Associates, and Samsung Research focussing on commercial analytics for life sciences and technology industries. My work included demand forecasting, market sizing, go-to-market strategy support, and operational planning, where data and models were used to guide real business decisions. During my master’s, I’m building hands-on projects in machine learning, deep learning, and time series forecasting with a focus on practical applications.
                     </p>
+
                 </div>
                 <div class="hero-image">
                     <img src="assets/images/profilepicture4.jpg" alt="Utkarsh Maheshwari">
@@ -642,102 +686,65 @@
         </section>
 
         <!-- Projects -->
-        <section id="projects">>
+        <section id="projects">
             <div class="container">
-                <h2 class="section-title">Projects</h2>
+                <h2 class="section-title">Projects & Research Work</h2>
                 
                 <!-- Featured Projects -->
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-utensils"></i>
+                            <!-- <i class="fas fa-utensils"></i> -->
+                            <img src="assets/images/nutrilens_cropped_thumbnail.png" alt="NutriLens preview" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div class="project-header">
                                 <h3 class="project-title">NutriLens</h3>
+                                <span class="badge">Applied ML</span>
                             </div>
-                            <p class="project-description">End-to-end nutrition tracking app using computer vision to identify food and calculate nutritional information. Deployed with FastAPI backend and Streamlit frontend.</p>
+                            <p class="project-description">End-to-end ML system to predict food processing levels based on its ingredients and recommend healthier alternatives with similar taste profiles. The core classifier achieves 97% accuracy, with fine tuned LLM-based explanations added to help users better understand nutrition labels. Deployed as a web application using a Flask backend and React frontend.</p>
                             <div class="project-tags">
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">Deep Learning</span>
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">Streamlit</span>
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">NLP</span>
+                                <span class="tag">LLMs</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">React</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                                <a href="https://github.com/utkarsh-mhw/NutriLens" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://nutri-lens-nu.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <!-- <i class="fas fa-map-marker-alt"></i> -->
+                            <img src="assets/images/why_here_thumbnai.png" alt="WhyHere preview" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div class="project-header">
                                 <h3 class="project-title">WhyHere</h3>
+                                <span class="badge">Applied ML</span>
                             </div>
-                            <p class="project-description">ML-powered location recommendation platform integrating geospatial data processing, predictive modeling, and interactive visualizations.</p>
+                            <p class="project-description">Smart neighborhood recommendation system for Atlanta that ranks areas based on user priorities like safety, transit, rent, and amenities. Uses collaborative filtering to suggest neighborhoods liked by similar users and a distance-decay scoring model enhanced with custom feature weighting to provide explainable rankings. Integrated data from 12+ APIs and processed it using Databricks and PySpark. Visualized results with an interactive map.</p>
                             <div class="project-tags">
                                 <span class="tag">Machine Learning</span>
-                                <span class="tag">Geospatial</span>
+                                <span class="tag">Databricks</span>
                                 <span class="tag">Python</span>
+                                <span class="tag">PySpark</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                                <a href="https://github.com/utkarsh-mhw/WhyHereTool" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://why-here-tool.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-header">
-                                <h3 class="project-title">Project in Development</h3>
-                                <span class="badge">WIP</span>
-                            </div>
-                            <p class="project-description">Advanced ML system currently under development. Full details and codebase will be released upon completion.</p>
-                            <div class="project-tags">
-                                <span class="tag">Deep Learning</span>
-                                <span class="tag">Python</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link disabled"><i class="fab fa-github"></i> Private Repo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- More Projects (Hidden Initially) -->
-                <div class="projects-grid more-projects" id="moreProjects">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-header">
-                                <h3 class="project-title">Image Style Transfer</h3>
-                                <span class="badge research">Paper Implementation</span>
-                            </div>
-                            <p class="project-description">Neural style transfer using CNNs to apply artistic styles from one image onto photographs while preserving content structure.</p>
-                            <div class="project-tags">
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">CNNs</span>
-                                <span class="tag">Computer Vision</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/utkarsh-mhw/Image-Style-Transfer-using-CNNs" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-image"></i>
+                            <!-- <i class="fas fa-image"></i> -->
+                            <img src="assets/images/lucid_gan_thumbnail.png" alt="Lucid-GAN preview" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div class="project-header">
@@ -755,10 +762,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <!-- More Projects (Hidden Initially) -->
+                <div class="projects-grid more-projects" id="moreProjects">
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-microphone"></i>
+                            <!-- <i class="fas fa-microphone"></i> -->
+                            <img src="assets/images/prism_thumbnail.png" alt="Speech Enhancement preview" loading="lazy">
                         </div>
                         <div class="project-body">
                             <div class="project-header">
@@ -769,6 +780,7 @@
                             <div class="project-tags">
                                 <span class="tag">TensorFlow</span>
                                 <span class="tag">Audio Processing</span>
+                                <span class="tag">Encoders</span>
                                 <span class="tag">Deep Learning</span>
                             </div>
                             <div class="project-links">
@@ -777,7 +789,56 @@
                         </div>
                     </div>
 
+                    
+
                     <div class="project-card">
+                        <div class="project-image">
+                            <!-- <i class="fas fa-palette"></i> -->
+                            <img src="assets/images/dcgan_thumbnail.png" alt="DC-GAN preview" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">Deep Convolutional GANs</h3>
+                                <span class="badge implementation">Paper Implementation</span>
+                            </div>
+                            <p class="project-description">Implemented the original GAN paper by Ian Goodfellow to generate new images by learning the distribution of a dataset. Trained convolutional generator and discriminator networks to create realistic images from random noise.</p>
+                            <div class="project-tags">
+                                <span class="tag">TensorFlow</span>
+                                <span class="tag">CNNs</span>
+                                <span class="tag">Computer Vision</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/utkarsh-mhw/Deep-Convolutional-Generative-Adversarial-Networks" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+
+                            <img src="assets/images/nst_thumbnail.png" alt="Neural Style Transfer preview" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <h3 class="project-title">Neural Style Transfer</h3>
+                                <span class="badge implementation">Paper Implementation</span>
+                            </div>
+                            <p class="project-description">Implemented the original neural style transfer paper to apply artistic styles from one image onto photographs while preserving content structure. Used CNNs to extract content and style representations and generate stylized images.</p>
+                            <div class="project-tags">
+                                <span class="tag">TensorFlow</span>
+                                <span class="tag">CNNs</span>
+                                <span class="tag">Computer Vision</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/utkarsh-mhw/Image-Style-Transfer-using-CNNs" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+
+                    <!-- <div class="project-card">
                         <div class="project-image">
                             <i class="fas fa-chart-bar"></i>
                         </div>
@@ -796,7 +857,7 @@
                                 <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="toggle-projects">
@@ -806,14 +867,14 @@
         </section>
 
         <!-- Experience -->
-        <section id="experience">>
+        <section id="experience">
             <div class="container">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title">Professional Experience</h2>
                 <div class="experience-list">
                     <div class="experience-item">
                         <div class="experience-header">
                             <h3 class="experience-title">Assistant Manager <span class="company">at Genpact</span></h3>
-                            <span class="experience-dates">Jan 2024 – May 2024</span>
+                            <span class="experience-dates">Jan 2025 – May 2025</span>
                         </div>
                         <p class="experience-description">Led sales force optimization projects, building predictive models, SQL pipelines, and Power BI dashboards to drive data-informed decision-making for US pharmaceutical clients.</p>
                     </div>
@@ -831,7 +892,7 @@
                             <h3 class="experience-title">Associate <span class="company">at ZS Associates</span></h3>
                             <span class="experience-dates">Jun 2021 – Dec 2023</span>
                         </div>
-                        <p class="experience-description">Built supply chain and financial models to support demand planning and launch strategy decisions using Excel, Python, and VBA for automation and business insights.</p>
+                        <p class="experience-description">Built demand planning and financial models to support demand forecasting and launch strategy decisions for major pharmaceutical firms using Excel, Python, and VBA enabling data-driven decision making.</p>
                     </div>
 
                     <div class="experience-item">
@@ -839,7 +900,7 @@
                             <h3 class="experience-title">Research Intern <span class="company">at Samsung Research Institute</span></h3>
                             <span class="experience-dates">Oct 2020 – Mar 2021</span>
                         </div>
-                        <p class="experience-description">Developed encoder-decoder neural networks using TensorFlow for speech signal denoising, performing data wrangling and feature extraction.</p>
+                        <p class="experience-description">Developed deep neural networks using TensorFlow for speech signal denoising, performing data wrangling and feature extraction.</p>
                     </div>
                 </div>
             </div>
@@ -850,9 +911,10 @@
     <footer>
         <div class="container">
             <div class="footer-links">
+                <a href="mailto:utkarshm005@gmail.com"><i class="fas fa-envelope"></i></a>
                 <a href="https://github.com/utkarsh-mhw" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/utkarshmah" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:utkarshm005@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://drive.google.com/file/d/1BYGccgCqhDdEc-DHJ7XOFFtI31lHNBsc/view?usp=sharing"><i class="fas fa-file-alt"></i></a>
             </div>
             <p class="footer-text">© 2025 Utkarsh Maheshwari</p>
         </div>
