@@ -1,5 +1,5 @@
-# Utkarsh Maheshwari Portfolio
+# My portfolio website
 
-Personal portfolio showcasing my projects, research, and professional experience in data science, machine learning, and applied analytics.
+Personal portfolio showcasing my projects, research, and professional experience.
 
 Feel free to clone or explore the code if you find it useful!
